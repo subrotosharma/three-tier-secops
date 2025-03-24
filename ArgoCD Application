@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: campground-app
+  namespace: argocd
+spec:
+  project: default
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: default
+  source:
+    repoURL: 'https://github.com/harsh2478/3-Tier-Full-Stack.git'
+    path: Production
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
